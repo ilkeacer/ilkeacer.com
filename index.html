@@ -4,34 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="İlke Acer — Robotik ve Yapay Zeka Geliştirici. Sistem mimarisi, donanım-yazılım entegrasyonu, YZ uygulamaları.">
-    <meta name="keywords" content="İlke Acer, Robotik, Yapay Zeka, YOLOv8, ESP32, Arduino, Portfolio">
     <meta name="author" content="İlke Acer">
-    <meta property="og:title" content="İlke Acer">
-    <meta property="og:description" content="Robotik & Yapay Zeka Geliştirici — ilkeacer.com">
     <title>İlke Acer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAV -->
     <nav id="navbar">
         <div class="nav-inner">
-            <a href="#hero" class="nav-monogram">İ.A.</a>
+            <a href="#hero" class="nav-logo">İlke Acer</a>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#about" class="nav-link">Hakkımda</a></li>
-                <li><a href="#skills" class="nav-link">Yetenekler</a></li>
+                <li><a href="#about"    class="nav-link">Hakkımda</a></li>
+                <li><a href="#skills"   class="nav-link">Yetenekler</a></li>
                 <li><a href="#projects" class="nav-link">Projeler</a></li>
-                <li><a href="#contact" class="nav-link">İletişim</a></li>
+                <li><a href="#contact"  class="nav-link">İletişim</a></li>
             </ul>
-            <div class="nav-actions">
+            <div class="nav-end">
                 <button id="theme-toggle" class="theme-btn" aria-label="Tema değiştir">
-                    <span class="theme-icon">○</span>
+                    <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
                 <button class="hamburger" id="hamburger" aria-label="Menü">
-                    <span></span><span></span>
+                    <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
@@ -39,93 +37,61 @@
 
     <!-- HERO -->
     <section id="hero">
-        <div class="hero-inner">
-            <div class="hero-eyebrow">Aydın, Türkiye</div>
-            <h1 class="hero-name">
-                <span class="name-first">İlke</span>
-                <span class="name-last">Acer</span>
-            </h1>
-            <div class="hero-rule"></div>
-            <p class="hero-title">Robotik & Yapay Zeka Geliştirici</p>
-            <p class="hero-sub">Aydın Adnan Menderes Üniversitesi · Önlisans · 2025–2027</p>
-            <div class="hero-cta">
-                <a href="#about" class="btn-text">Keşfet <span class="arrow">↓</span></a>
-                <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="btn-outline" id="hero-github">GitHub</a>
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tag">Aydın Adnan Menderes Üniversitesi · Robotik & Yapay Zeka</p>
+                <h1 class="hero-title">İlke Acer</h1>
+                <p class="hero-desc">
+                    Yapay zeka modellerini fiziksel donanımlarla birleştirerek otonom sistemler geliştiriyorum.
+                    Sistem mimarisi, sensör entegrasyonu ve görüntü işleme üzerine çalışıyorum.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">Projeleri Gör</a>
+                    <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="btn-ghost" id="hero-github">GitHub</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-scroll">
-            <div class="scroll-track"></div>
         </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about">
         <div class="container">
-            <div class="section-label">01 — Hakkımda</div>
-            <div class="about-layout">
-                <div class="about-photo-col">
-                    <div class="photo-wrap">
-                        <img src="https://avatars.githubusercontent.com/u/232176171?v=4" alt="İlke Acer" id="about-photo">
-                    </div>
-                    <div class="about-meta">
-                        <div class="meta-row">
-                            <span class="meta-key">Konum</span>
-                            <span class="meta-val">Aydın, Türkiye</span>
-                        </div>
-                        <div class="meta-row">
-                            <span class="meta-key">Üniversite</span>
-                            <span class="meta-val">ADÜ</span>
-                        </div>
-                        <div class="meta-row">
-                            <span class="meta-key">GNO</span>
-                            <span class="meta-val">3.61 / 4.00</span>
-                        </div>
-                        <div class="meta-row">
-                            <span class="meta-key">E-posta</span>
-                            <span class="meta-val"><a href="mailto:ilkeacer@gmail.com">ilkeacer@gmail.com</a></span>
-                        </div>
-                        <div class="meta-row">
-                            <span class="meta-key">Telefon</span>
-                            <span class="meta-val">+90 539 681 46 75</span>
-                        </div>
-                    </div>
+            <h2 class="section-title">Hakkımda</h2>
+            <div class="about-grid">
+                <div class="about-photo-wrap">
+                    <img src="https://avatars.githubusercontent.com/u/232176171?v=4" alt="İlke Acer" id="about-photo">
                 </div>
-                <div class="about-text-col">
-                    <h2 class="about-heading">Yapay Zeka & Donanım<br><em>Entegrasyonu Üzerine</em></h2>
-                    <p>
-                        Yapay zeka modellerini fiziksel donanımlarla birleştirerek otonom mekanizmalar kurgulayan ve 
-                        donanım-yazılım entegrasyonu üzerine çalışan bir geliştiriciyim. Sistem mimarisi tasarımı, 
-                        cihazlar arası haberleşme ve sensör veri işleme alanlarında pratik altyapımı geliştiriyorum.
+                <div class="about-body">
+                    <p class="about-text">
+                        Robotik ve Yapay Zeka öğrencisiyim. Yazılımın sözdiziminden çok algoritma iskeletini
+                        ve sistem mantığını tasarlamaya odaklanıyorum. Elektronik prototipleme araçlarıyla
+                        kavramsal fikirleri çalışan fiziksel sistemlere dönüştürüyorum.
                     </p>
-                    <p>
-                        Geliştirme süreçlerimde yapay zeka destekli kodlama metodolojilerini kullanarak yazılımın 
-                        sözdiziminden ziyade algoritma iskeletini ve sistem mantığını tasarlamaya odaklanıyorum. 
-                        Elektronik prototipleme araçlarıyla kavramsal fikirleri test edilebilir fiziksel sistemlere 
-                        dönüştürme üzerine deneyim kazanıyorum.
+                    <p class="about-text">
+                        Robotik ve Yapay Zekâ Topluluğu'nda yönetim kurulu üyesi olarak teknik atölyeler
+                        düzenliyor, EGEKAF gibi kariyer fuarlarında projelerimi sektör profesyonellerine sunuyorum.
                     </p>
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <span class="h-num">3.61</span>
-                            <span class="h-label">GNO</span>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-key">Üniversite</span>
+                            <span class="info-val">Aydın Adnan Menderes Üniversitesi</span>
                         </div>
-                        <div class="h-divider"></div>
-                        <div class="highlight">
-                            <span class="h-num">2025</span>
-                            <span class="h-label">Başlangıç</span>
+                        <div class="info-item">
+                            <span class="info-key">Bölüm</span>
+                            <span class="info-val">Robotik ve Yapay Zeka (Önlisans)</span>
                         </div>
-                        <div class="h-divider"></div>
-                        <div class="highlight">
-                            <span class="h-num">YK</span>
-                            <span class="h-label">Robotik Topluluğu</span>
+                        <div class="info-item">
+                            <span class="info-key">GNO</span>
+                            <span class="info-val">3.61 / 4.00</span>
                         </div>
-                    </div>
-                    <div class="activity-block">
-                        <div class="activity-title">Robotik ve Yapay Zekâ Topluluğu — <em>Yönetim Kurulu Üyesi</em></div>
-                        <div class="activity-period">2025 – Devam</div>
-                        <ul class="activity-list">
-                            <li>Teknik atölye ve organizasyon süreçlerinin yönetimi</li>
-                            <li>EGEKAF'ta donanım ve yazılım projelerinin sektör profesyonellerine sunumu</li>
-                        </ul>
+                        <div class="info-item">
+                            <span class="info-key">Konum</span>
+                            <span class="info-val">Aydın, Türkiye</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-key">E-posta</span>
+                            <span class="info-val"><a href="mailto:ilkeacer@hotmail.com">ilkeacer@hotmail.com</a></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,48 +101,47 @@
     <!-- SKILLS -->
     <section id="skills">
         <div class="container">
-            <div class="section-label">02 — Teknik Yetkinlikler</div>
-            <div class="skills-layout">
-                <div class="skill-group">
-                    <div class="skill-group-title">Sistem & Tasarım</div>
-                    <ul class="skill-list">
+            <h2 class="section-title">Yetenekler</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 class="skill-cat">Sistem & Tasarım</h3>
+                    <ul class="skill-items">
                         <li>Sistem Mimarisi Kurgulama</li>
                         <li>Sensör Entegrasyonu</li>
                         <li>Algoritma Tasarımı</li>
                         <li>AI-Assisted Development</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-title">YZ & Görü</div>
-                    <ul class="skill-list">
+                <div class="skill-card">
+                    <h3 class="skill-cat">Yapay Zeka & Görü</h3>
+                    <ul class="skill-items">
                         <li>YOLOv8 Entegrasyonu</li>
-                        <li>Uygulamalı Görüntü İşleme</li>
-                        <li>Hazır YZ Modellerinin Adaptasyonu</li>
-                        <li>OpenCV</li>
+                        <li>Görüntü İşleme (OpenCV)</li>
+                        <li>YZ Model Adaptasyonu</li>
+                        <li>Gerçek Zamanlı Algılama</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-title">Donanım</div>
-                    <ul class="skill-list">
+                <div class="skill-card">
+                    <h3 class="skill-cat">Donanım</h3>
+                    <ul class="skill-items">
                         <li>ESP32</li>
                         <li>Arduino</li>
                         <li>Raspberry Pi</li>
                         <li>Elektronik Prototipleme</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-title">Yazılım & İletişim</div>
-                    <ul class="skill-list">
+                <div class="skill-card">
+                    <h3 class="skill-cat">Yazılım</h3>
+                    <ul class="skill-items">
                         <li>Python · C++</li>
                         <li>TCP · UDP · I2C</li>
-                        <li>VS Code · Arduino IDE</li>
                         <li>Git · GitHub</li>
+                        <li>VS Code · Arduino IDE</li>
                     </ul>
                 </div>
             </div>
-            <div class="cert-bar">
-                <span class="cert-label">Sertifika</span>
-                <span class="cert-text">İngilizce B1 — BTK Akademi Başarı Sertifikası, 2025</span>
+            <div class="cert-note">
+                Sertifika: İngilizce B1 — BTK Akademi, 2025
             </div>
         </div>
     </section>
@@ -184,32 +149,32 @@
     <!-- PROJECTS -->
     <section id="projects">
         <div class="container">
-            <div class="section-label">03 — Projeler</div>
-            <div class="featured-project" id="featured-project">
-                <div class="fp-tag">Öne Çıkan Proje</div>
-                <h3 class="fp-title">Ateşli Silah Eğitimleri İçin<br>YZ Destekli Kaza Önleme Sistemi</h3>
-                <p class="fp-desc">
-                    YOLOv8 tabanlı gerçek zamanlı nesne algılama kullanılarak ateşli silah eğitimlerinde 
-                    kaza riskini minimize eden otonom bir güvenlik sistemi. Donanım-yazılım entegrasyonunu 
-                    ve bilgisayarlı görüyü birleştiren kapsamlı bir proje.
+            <h2 class="section-title">Projeler</h2>
+
+            <!-- Featured -->
+            <div class="featured-card" id="featured-card">
+                <div class="fc-label">Öne Çıkan Proje</div>
+                <h3 class="fc-title">Ateşli Silah Eğitimleri İçin YZ Destekli Kaza Önleme Sistemi</h3>
+                <p class="fc-desc">
+                    YOLOv8 tabanlı gerçek zamanlı nesne algılama ile ateşli silah eğitimlerinde
+                    kaza riskini minimize eden otonom güvenlik sistemi.
                 </p>
-                <div class="fp-tags">
+                <div class="fc-chips">
                     <span>YOLOv8</span>
                     <span>Python</span>
-                    <span>Bilgisayarlı Görü</span>
+                    <span>Görüntü İşleme</span>
                     <span>Gerçek Zamanlı</span>
                 </div>
             </div>
-            <div class="section-sub">GitHub Projeleri</div>
-            <div class="projects-grid" id="projects-grid">
-                <div class="proj-loading" id="projects-loading">
-                    <div class="loading-line"></div>
-                    <p>Yükleniyor...</p>
-                </div>
+
+            <!-- GitHub repos -->
+            <h3 class="sub-title">GitHub Repoları</h3>
+            <div id="projects-list">
+                <div id="projects-loading" class="loading-state">Yükleniyor...</div>
             </div>
-            <div class="projects-empty hidden" id="projects-empty">
-                <p>Projeler çok yakında GitHub'da görünecek.</p>
-                <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="btn-outline" id="github-empty-link">GitHub →</a>
+            <div id="projects-empty" class="empty-state hidden">
+                <p>GitHub'a proje ekledikçe burada otomatik görünecek.</p>
+                <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="btn-ghost" id="github-empty">GitHub'a Git</a>
             </div>
         </div>
     </section>
@@ -217,46 +182,44 @@
     <!-- CONTACT -->
     <section id="contact">
         <div class="container">
-            <div class="section-label">04 — İletişim</div>
-            <div class="contact-layout">
-                <div class="contact-left">
-                    <h2 class="contact-heading">Bir proje fikrin mi var?<br><em>Konuşalım.</em></h2>
-                    <p class="contact-desc">
-                        Akademik iş birliği, proje geliştirme veya herhangi bir konuda 
-                        iletişime geçmekten çekinme.
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p class="contact-intro">
+                        Proje iş birliği, akademik iletişim veya herhangi bir konu için ulaşabilirsin.
                     </p>
-                    <div class="contact-links">
-                        <a href="mailto:ilkeacer@gmail.com" class="contact-link" id="contact-email">
-                            <span class="cl-label">E-posta</span>
-                            <span class="cl-value">ilkeacer@gmail.com →</span>
+                    <div class="contact-items">
+                        <a href="mailto:ilkeacer@hotmail.com" class="contact-item" id="c-email">
+                            <span class="ci-label">E-posta</span>
+                            <span class="ci-val">ilkeacer@hotmail.com</span>
                         </a>
-                        <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="contact-link" id="contact-github">
-                            <span class="cl-label">GitHub</span>
-                            <span class="cl-value">github.com/ilkeacer →</span>
+                        <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="contact-item" id="c-github">
+                            <span class="ci-label">GitHub</span>
+                            <span class="ci-val">github.com/ilkeacer</span>
                         </a>
-                        <a href="tel:+905396814675" class="contact-link" id="contact-phone">
-                            <span class="cl-label">Telefon</span>
-                            <span class="cl-value">+90 539 681 46 75 →</span>
+                        <a href="tel:+905396814675" class="contact-item" id="c-phone">
+                            <span class="ci-label">Telefon</span>
+                            <span class="ci-val">+90 539 681 46 75</span>
                         </a>
                     </div>
                 </div>
-                <form class="contact-form" id="contact-form" novalidate>
-                    <div class="form-row">
-                        <div class="form-field">
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="field-row">
+                        <div class="field">
                             <label for="form-name">İsim</label>
                             <input type="text" id="form-name" name="name" placeholder="Adın Soyadın" required>
                         </div>
-                        <div class="form-field">
+                        <div class="field">
                             <label for="form-email">E-posta</label>
-                            <input type="email" id="form-email" name="email" placeholder="ornek@email.com" required>
+                            <input type="email" id="form-email" name="email" placeholder="email@ornek.com" required>
                         </div>
                     </div>
-                    <div class="form-field">
+                    <div class="field">
                         <label for="form-message">Mesaj</label>
                         <textarea id="form-message" name="message" rows="5" placeholder="Mesajını yaz..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit" id="contact-submit">Gönder</button>
-                    <p class="form-feedback" id="form-feedback"></p>
+                    <button type="submit" id="contact-submit" class="btn-primary">Gönder</button>
+                    <p id="form-feedback" class="form-feedback"></p>
                 </form>
             </div>
         </div>
@@ -265,10 +228,9 @@
     <!-- FOOTER -->
     <footer id="footer">
         <div class="container">
-            <div class="footer-inner">
-                <span class="footer-mono">İlke Acer · 2025</span>
-                <span class="footer-center">Robotik & Yapay Zeka</span>
-                <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="footer-link" id="footer-github">github.com/ilkeacer</a>
+            <div class="footer-row">
+                <span>© 2025 İlke Acer</span>
+                <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" id="footer-github">github.com/ilkeacer</a>
             </div>
         </div>
     </footer>

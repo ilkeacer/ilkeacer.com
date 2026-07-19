@@ -20,20 +20,22 @@ const LANG_COLORS = {
 };
 
 // ─── THEME ────────────────────────────────
-const htmlEl     = document.documentElement;
-const themeBtn   = document.getElementById('theme-toggle');
-const themeIcon  = document.querySelector('.theme-icon');
+const html     = document.documentElement;
+const themeBtn = document.getElementById('theme-toggle');
+const iconMoon = document.getElementById('icon-moon');
+const iconSun  = document.getElementById('icon-sun');
 
 function setTheme(t) {
-    htmlEl.setAttribute('data-theme', t);
-    themeIcon.textContent = t === 'dark' ? '○' : '●';
+    html.setAttribute('data-theme', t);
+    iconMoon.style.display = t === 'dark' ? '' : 'none';
+    iconSun.style.display  = t === 'light' ? '' : 'none';
     localStorage.setItem('theme', t);
 }
 
 setTheme(localStorage.getItem('theme') || 'dark');
 
 themeBtn.addEventListener('click', () => {
-    setTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 });
 
 // ─── NAVBAR ───────────────────────────────
@@ -42,8 +44,8 @@ const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('nav-links');
 
 window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-    highlightNav();
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+    updateNav();
 }, { passive: true });
 
 hamburger.addEventListener('click', () => {
@@ -58,91 +60,84 @@ navLinks.querySelectorAll('.nav-link').forEach(l => {
     });
 });
 
-function highlightNav() {
-    const ids = ['about', 'skills', 'projects', 'contact'];
-    const scrollY = window.scrollY + 100;
-    ids.forEach(id => {
+function updateNav() {
+    const sections = ['about', 'skills', 'projects', 'contact'];
+    const y = window.scrollY + 80;
+    sections.forEach(id => {
         const s = document.getElementById(id);
         const l = document.querySelector(`.nav-link[href="#${id}"]`);
         if (!s || !l) return;
-        const active = scrollY >= s.offsetTop && scrollY < s.offsetTop + s.offsetHeight;
-        l.classList.toggle('active', active);
+        l.classList.toggle('active', y >= s.offsetTop && y < s.offsetTop + s.offsetHeight);
     });
 }
 
-// ─── SCROLL REVEAL ────────────────────────
-const revealTargets = document.querySelectorAll(
-    '.about-photo-col, .about-text-col, .skill-group, .featured-project, .project-row, .contact-left, .contact-form, .cert-bar'
+// ─── FADE IN ──────────────────────────────
+const fades = document.querySelectorAll(
+    '.hero-content, .about-grid, .skills-grid, .featured-card, #projects-list, .contact-grid'
 );
+fades.forEach(el => el.classList.add('fade-in'));
 
-revealTargets.forEach(el => el.classList.add('reveal'));
-
-const revObs = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('visible'), i * 60);
-            revObs.unobserve(entry.target);
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
         }
     });
-}, { threshold: 0.08 });
+}, { threshold: 0.05 });
 
-revealTargets.forEach(el => revObs.observe(el));
+fades.forEach(el => obs.observe(el));
 
 // ─── GITHUB ───────────────────────────────
-async function loadGitHub() {
+async function loadRepos() {
     try {
         const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=20`);
-        if (!res.ok) throw new Error('API error');
+        if (!res.ok) throw new Error();
         const repos = await res.json();
-        const filtered = repos.filter(r => !r.fork).sort((a, b) =>
-            (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at))
+        const list  = repos.filter(r => !r.fork).sort(
+            (a, b) => b.stargazers_count - a.stargazers_count || new Date(b.updated_at) - new Date(a.updated_at)
         );
-        renderRepos(filtered);
-    } catch (e) {
+        renderRepos(list);
+    } catch {
         showEmpty();
     }
 }
 
 function renderRepos(repos) {
-    const grid    = document.getElementById('projects-grid');
-    const loading = document.getElementById('projects-loading');
-    const empty   = document.getElementById('projects-empty');
+    const container = document.getElementById('projects-list');
+    const loading   = document.getElementById('projects-loading');
+    const empty     = document.getElementById('projects-empty');
 
     if (loading) loading.remove();
 
     if (!repos.length) { showEmpty(); return; }
 
-    repos.forEach((repo, i) => {
-        const lang  = repo.language || '—';
-        const color = LANG_COLORS[lang] || '#6a6a6a';
+    repos.forEach(repo => {
+        const lang  = repo.language || null;
+        const color = lang ? (LANG_COLORS[lang] || '#666') : '#444';
         const row   = document.createElement('div');
-        row.className = 'project-row';
-
+        row.className = 'proj-row';
         row.innerHTML = `
             <div class="pr-left">
-                <span class="pr-lang-dot" style="background:${color}" title="${lang}"></span>
-                <div>
+                ${lang ? `<span class="pr-dot" style="background:${color}" title="${lang}"></span>` : ''}
+                <div class="pr-info">
                     <div class="pr-name">${repo.name}</div>
                     ${repo.description ? `<div class="pr-desc">${repo.description}</div>` : ''}
                 </div>
             </div>
             <div class="pr-right">
+                ${repo.stargazers_count > 0 ? `
                 <span class="pr-stat">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                     </svg>
                     ${repo.stargazers_count}
-                </span>
+                </span>` : ''}
                 <a href="${repo.html_url}" target="_blank" rel="noopener" class="pr-link">GitHub →</a>
                 ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" rel="noopener" class="pr-link">Demo →</a>` : ''}
             </div>
         `;
-
-        grid.appendChild(row);
-
-        // observe for reveal
-        row.classList.add('reveal');
-        revObs.observe(row);
+        container.appendChild(row);
     });
 }
 
@@ -169,18 +164,14 @@ form.addEventListener('submit', (e) => {
         return;
     }
 
-    const subject = `İletişim — ${name}`;
-    const body    = `Gönderen: ${name}\nE-posta: ${email}\n\n${message}`;
-    window.location.href = `mailto:ilkeacer@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const sub  = `İlkeacer.com — ${name}`;
+    const body = `Gönderen: ${name}\nE-posta: ${email}\n\n${message}`;
+    window.location.href = `mailto:ilkeacer@hotmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
 
-    feedback.textContent = 'E-posta istemciniz açılıyor...';
+    feedback.textContent = 'E-posta uygulamanız açılıyor...';
     feedback.className = 'form-feedback success';
-
-    setTimeout(() => {
-        feedback.textContent = '';
-        form.reset();
-    }, 3000);
+    setTimeout(() => { feedback.textContent = ''; form.reset(); }, 3000);
 });
 
 // ─── INIT ─────────────────────────────────
-loadGitHub();
+loadRepos();
