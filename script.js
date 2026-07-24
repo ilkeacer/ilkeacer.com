@@ -8,6 +8,7 @@ const TRANSLATIONS = {
         'nav.about':    'Hakkımda',
         'nav.skills':   'Yetenekler',
         'nav.projects': 'Projeler',
+        'nav.demo':     'Demo',
         'nav.contact':  'İletişim',
 
         'hero.tag':  'Aydın Adnan Menderes Üniversitesi · Robotik & Yapay Zeka',
@@ -60,12 +61,25 @@ const TRANSLATIONS = {
         'contact.send':      'Gönder',
         'contact.opening':   'E-posta uygulamanız açılıyor...',
         'contact.fill':      'Lütfen tüm alanları doldurun.',
+
+        'demo.title':       'Canlı Demo',
+        'demo.intro':       'Tarayıcında çalışan gerçek zamanlı nesne tanıma demosu. Kamerana erişim izni ver, yapay zeka modelim etrafındaki nesneleri anında algılasın.',
+        'demo.placeholder': 'Kamerayı başlatmak için butona bas',
+        'demo.start':       'Kamerayı Başlat',
+        'demo.ready':       'Hazır',
+        'demo.waiting':     'Algılanan nesne yok',
+        'demo.model':       'Model',
+        'demo.classes':     'Sınıf',
+        'demo.runs':        'Ortam',
+        'demo.browser':     'Tarayıcı (GPU)',
+        'demo.privacy':     '🔒 Kamera görüntüsü sunucuya gönderilmez, tamamen tarayıcında işlenir.',
     },
 
     en: {
         'nav.about':    'About',
         'nav.skills':   'Skills',
         'nav.projects': 'Projects',
+        'nav.demo':     'Demo',
         'nav.contact':  'Contact',
 
         'hero.tag':  'Aydın Adnan Menderes University · Robotics & Artificial Intelligence',
@@ -118,6 +132,18 @@ const TRANSLATIONS = {
         'contact.send':      'Send',
         'contact.opening':   'Opening your email client...',
         'contact.fill':      'Please fill in all fields.',
+
+        'demo.title':       'Live Demo',
+        'demo.intro':       'A real-time object detection demo running entirely in your browser. Grant camera access and let my AI model detect objects around you instantly.',
+        'demo.placeholder': 'Press the button to start the camera',
+        'demo.start':       'Start Camera',
+        'demo.ready':       'Ready',
+        'demo.waiting':     'No objects detected',
+        'demo.model':       'Model',
+        'demo.classes':     'Classes',
+        'demo.runs':        'Runs on',
+        'demo.browser':     'Browser (GPU)',
+        'demo.privacy':     '🔒 Camera feed is never sent to a server — processed entirely in your browser.',
     }
 };
 

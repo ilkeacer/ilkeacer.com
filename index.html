@@ -21,6 +21,7 @@
                 <li><a href="#about"    class="nav-link" data-i18n="nav.about">Hakkımda</a></li>
                 <li><a href="#skills"   class="nav-link" data-i18n="nav.skills">Yetenekler</a></li>
                 <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projeler</a></li>
+                <li><a href="#demo"     class="nav-link" data-i18n="nav.demo">Demo</a></li>
                 <li><a href="#contact"  class="nav-link" data-i18n="nav.contact">İletişim</a></li>
             </ul>
             <div class="nav-end">
@@ -178,6 +179,59 @@
         </div>
     </section>
 
+    <!-- DEMO -->
+    <section id="demo">
+        <div class="container">
+            <h2 class="section-title" data-i18n="demo.title">Canlı Demo</h2>
+            <p class="demo-intro" data-i18n="demo.intro">
+                Tarayıcında çalışan gerçek zamanlı nesne tanıma demosu. Kamerana erişim izni ver,
+                yapay zeka modelim etrafındaki nesneleri anında algılasın.
+            </p>
+            <div class="demo-layout">
+                <div class="demo-viewport-wrap">
+                    <div class="demo-viewport" id="demo-viewport">
+                        <video id="demo-video" autoplay muted playsinline></video>
+                        <canvas id="demo-canvas"></canvas>
+                        <div class="demo-placeholder" id="demo-placeholder">
+                            <div class="demo-placeholder-icon">📷</div>
+                            <p data-i18n="demo.placeholder">Kamerayı başlatmak için butona bas</p>
+                        </div>
+                    </div>
+                    <div class="demo-controls">
+                        <button id="demo-btn" class="btn-primary" data-i18n="demo.start">Kamerayı Başlat</button>
+                        <span class="demo-fps" id="demo-fps"></span>
+                    </div>
+                </div>
+                <div class="demo-panel">
+                    <div class="demo-status" id="demo-status">
+                        <span class="ds-dot" id="ds-dot"></span>
+                        <span id="ds-text" data-i18n="demo.ready">Hazır</span>
+                    </div>
+                    <div class="demo-detections" id="demo-detections">
+                        <p class="demo-empty" data-i18n="demo.waiting">Algılanan nesne yok</p>
+                    </div>
+                    <div class="demo-info">
+                        <div class="di-row">
+                            <span data-i18n="demo.model">Model</span>
+                            <span class="di-val">COCO-SSD · TensorFlow.js</span>
+                        </div>
+                        <div class="di-row">
+                            <span data-i18n="demo.classes">Sınıf</span>
+                            <span class="di-val">80 nesne</span>
+                        </div>
+                        <div class="di-row">
+                            <span data-i18n="demo.runs">Ortam</span>
+                            <span class="di-val" data-i18n="demo.browser">Tarayıcı (GPU)</span>
+                        </div>
+                    </div>
+                    <p class="demo-note" data-i18n="demo.privacy">
+                        🔒 Kamera görüntüsü sunucuya gönderilmez, tamamen tarayıcında işlenir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact">
         <div class="container">
@@ -235,5 +289,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="demo.js" defer></script>
 </body>
 </html>
