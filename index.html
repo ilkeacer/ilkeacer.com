@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="İlke Acer — Robotik ve Yapay Zeka Geliştirici. Sistem mimarisi, donanım-yazılım entegrasyonu, YZ uygulamaları.">
+    <meta name="description" content="İlke Acer — Robotik ve Yapay Zeka Geliştirici.">
     <meta name="author" content="İlke Acer">
     <title>İlke Acer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,15 +18,18 @@
         <div class="nav-inner">
             <a href="#hero" class="nav-logo">İlke Acer</a>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#about"    class="nav-link">Hakkımda</a></li>
-                <li><a href="#skills"   class="nav-link">Yetenekler</a></li>
-                <li><a href="#projects" class="nav-link">Projeler</a></li>
-                <li><a href="#contact"  class="nav-link">İletişim</a></li>
+                <li><a href="#about"    class="nav-link" data-i18n="nav.about">Hakkımda</a></li>
+                <li><a href="#skills"   class="nav-link" data-i18n="nav.skills">Yetenekler</a></li>
+                <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projeler</a></li>
+                <li><a href="#contact"  class="nav-link" data-i18n="nav.contact">İletişim</a></li>
             </ul>
             <div class="nav-end">
+                <!-- Language Toggle -->
+                <button id="lang-toggle" class="lang-btn" aria-label="Change language">TR</button>
+                <!-- Theme Toggle -->
                 <button id="theme-toggle" class="theme-btn" aria-label="Tema değiştir">
                     <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg id="icon-sun"  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
                 <button class="hamburger" id="hamburger" aria-label="Menü">
                     <span></span><span></span><span></span>
@@ -39,14 +42,14 @@
     <section id="hero">
         <div class="container">
             <div class="hero-content">
-                <p class="hero-tag">Aydın Adnan Menderes Üniversitesi · Robotik & Yapay Zeka</p>
+                <p class="hero-tag" data-i18n="hero.tag">Aydın Adnan Menderes Üniversitesi · Robotik &amp; Yapay Zeka</p>
                 <h1 class="hero-title">İlke Acer</h1>
-                <p class="hero-desc">
+                <p class="hero-desc" data-i18n="hero.desc">
                     Yapay zeka modellerini fiziksel donanımlarla birleştirerek otonom sistemler geliştiriyorum.
                     Sistem mimarisi, sensör entegrasyonu ve görüntü işleme üzerine çalışıyorum.
                 </p>
                 <div class="hero-actions">
-                    <a href="#projects" class="btn-primary">Projeleri Gör</a>
+                    <a href="#projects" class="btn-primary" data-i18n="hero.cta">Projeleri Gör</a>
                     <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="btn-ghost" id="hero-github">GitHub</a>
                 </div>
             </div>
@@ -56,40 +59,40 @@
     <!-- ABOUT -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">Hakkımda</h2>
+            <h2 class="section-title" data-i18n="nav.about">Hakkımda</h2>
             <div class="about-grid">
                 <div class="about-photo-wrap">
                     <img src="https://avatars.githubusercontent.com/u/232176171?v=4" alt="İlke Acer" id="about-photo">
                 </div>
                 <div class="about-body">
-                    <p class="about-text">
+                    <p class="about-text" data-i18n="about.p1">
                         Robotik ve Yapay Zeka öğrencisiyim. Yazılımın sözdiziminden çok algoritma iskeletini
                         ve sistem mantığını tasarlamaya odaklanıyorum. Elektronik prototipleme araçlarıyla
                         kavramsal fikirleri çalışan fiziksel sistemlere dönüştürüyorum.
                     </p>
-                    <p class="about-text">
+                    <p class="about-text" data-i18n="about.p2">
                         Robotik ve Yapay Zekâ Topluluğu'nda yönetim kurulu üyesi olarak teknik atölyeler
                         düzenliyor, EGEKAF gibi kariyer fuarlarında projelerimi sektör profesyonellerine sunuyorum.
                     </p>
                     <div class="info-list">
                         <div class="info-item">
-                            <span class="info-key">Üniversite</span>
+                            <span class="info-key" data-i18n="about.university">Üniversite</span>
                             <span class="info-val">Aydın Adnan Menderes Üniversitesi</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-key">Bölüm</span>
-                            <span class="info-val">Robotik ve Yapay Zeka (Önlisans)</span>
+                            <span class="info-key" data-i18n="about.department">Bölüm</span>
+                            <span class="info-val" data-i18n="about.departmentVal">Robotik ve Yapay Zeka (Önlisans)</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-key">GNO</span>
+                            <span class="info-key" data-i18n="about.gpa">GNO</span>
                             <span class="info-val">3.61 / 4.00</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-key">Konum</span>
+                            <span class="info-key" data-i18n="about.location">Konum</span>
                             <span class="info-val">Aydın, Türkiye</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-key">E-posta</span>
+                            <span class="info-key" data-i18n="about.email">E-posta</span>
                             <span class="info-val"><a href="mailto:ilkeacer@hotmail.com">ilkeacer@hotmail.com</a></span>
                         </div>
                     </div>
@@ -101,37 +104,37 @@
     <!-- SKILLS -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">Yetenekler</h2>
+            <h2 class="section-title" data-i18n="nav.skills">Yetenekler</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3 class="skill-cat">Sistem & Tasarım</h3>
+                    <h3 class="skill-cat" data-i18n="skills.cat1">Sistem &amp; Tasarım</h3>
                     <ul class="skill-items">
-                        <li>Sistem Mimarisi Kurgulama</li>
-                        <li>Sensör Entegrasyonu</li>
-                        <li>Algoritma Tasarımı</li>
+                        <li data-i18n="skills.s1_1">Sistem Mimarisi Kurgulama</li>
+                        <li data-i18n="skills.s1_2">Sensör Entegrasyonu</li>
+                        <li data-i18n="skills.s1_3">Algoritma Tasarımı</li>
                         <li>AI-Assisted Development</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-cat">Yapay Zeka & Görü</h3>
+                    <h3 class="skill-cat" data-i18n="skills.cat2">Yapay Zeka &amp; Görü</h3>
                     <ul class="skill-items">
-                        <li>YOLOv8 Entegrasyonu</li>
-                        <li>Görüntü İşleme (OpenCV)</li>
-                        <li>YZ Model Adaptasyonu</li>
-                        <li>Gerçek Zamanlı Algılama</li>
+                        <li data-i18n="skills.s2_1">YOLOv8 Entegrasyonu</li>
+                        <li data-i18n="skills.s2_2">Görüntü İşleme (OpenCV)</li>
+                        <li data-i18n="skills.s2_3">YZ Model Adaptasyonu</li>
+                        <li data-i18n="skills.s2_4">Gerçek Zamanlı Algılama</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-cat">Donanım</h3>
+                    <h3 class="skill-cat" data-i18n="skills.cat3">Donanım</h3>
                     <ul class="skill-items">
+                        <li data-i18n="skills.s3_1">Elektronik Prototipleme</li>
                         <li>ESP32</li>
                         <li>Arduino</li>
                         <li>Raspberry Pi</li>
-                        <li>Elektronik Prototipleme</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-cat">Yazılım</h3>
+                    <h3 class="skill-cat" data-i18n="skills.cat4">Yazılım</h3>
                     <ul class="skill-items">
                         <li>Python · C++</li>
                         <li>TCP · UDP · I2C</li>
@@ -140,7 +143,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="cert-note">
+            <div class="cert-note" data-i18n="skills.cert">
                 Sertifika: İngilizce B1 — BTK Akademi, 2025
             </div>
         </div>
@@ -149,32 +152,28 @@
     <!-- PROJECTS -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Projeler</h2>
-
-            <!-- Featured -->
+            <h2 class="section-title" data-i18n="nav.projects">Projeler</h2>
             <div class="featured-card" id="featured-card">
-                <div class="fc-label">Öne Çıkan Proje</div>
-                <h3 class="fc-title">Ateşli Silah Eğitimleri İçin YZ Destekli Kaza Önleme Sistemi</h3>
-                <p class="fc-desc">
+                <div class="fc-label" data-i18n="projects.featured">Öne Çıkan Proje</div>
+                <h3 class="fc-title" data-i18n="projects.featuredTitle">Ateşli Silah Eğitimleri İçin YZ Destekli Kaza Önleme Sistemi</h3>
+                <p class="fc-desc" data-i18n="projects.featuredDesc">
                     YOLOv8 tabanlı gerçek zamanlı nesne algılama ile ateşli silah eğitimlerinde
                     kaza riskini minimize eden otonom güvenlik sistemi.
                 </p>
                 <div class="fc-chips">
                     <span>YOLOv8</span>
                     <span>Python</span>
-                    <span>Görüntü İşleme</span>
-                    <span>Gerçek Zamanlı</span>
+                    <span data-i18n="projects.chip1">Görüntü İşleme</span>
+                    <span data-i18n="projects.chip2">Gerçek Zamanlı</span>
                 </div>
             </div>
-
-            <!-- GitHub repos -->
-            <h3 class="sub-title">GitHub Repoları</h3>
+            <h3 class="sub-title" data-i18n="projects.ghTitle">GitHub Repoları</h3>
             <div id="projects-list">
-                <div id="projects-loading" class="loading-state">Yükleniyor...</div>
+                <div id="projects-loading" class="loading-state" data-i18n="projects.loading">Yükleniyor...</div>
             </div>
             <div id="projects-empty" class="empty-state hidden">
-                <p>GitHub'a proje ekledikçe burada otomatik görünecek.</p>
-                <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="btn-ghost" id="github-empty">GitHub'a Git</a>
+                <p data-i18n="projects.emptyMsg">GitHub'a proje ekledikçe burada otomatik görünecek.</p>
+                <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="btn-ghost" id="github-empty" data-i18n="projects.emptyBtn">GitHub'a Git</a>
             </div>
         </div>
     </section>
@@ -182,15 +181,15 @@
     <!-- CONTACT -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">İletişim</h2>
+            <h2 class="section-title" data-i18n="nav.contact">İletişim</h2>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <p class="contact-intro">
+                    <p class="contact-intro" data-i18n="contact.intro">
                         Proje iş birliği, akademik iletişim veya herhangi bir konu için ulaşabilirsin.
                     </p>
                     <div class="contact-items">
                         <a href="mailto:ilkeacer@hotmail.com" class="contact-item" id="c-email">
-                            <span class="ci-label">E-posta</span>
+                            <span class="ci-label" data-i18n="contact.emailLabel">E-posta</span>
                             <span class="ci-val">ilkeacer@hotmail.com</span>
                         </a>
                         <a href="https://github.com/ilkeacer" target="_blank" rel="noopener" class="contact-item" id="c-github">
@@ -198,7 +197,7 @@
                             <span class="ci-val">github.com/ilkeacer</span>
                         </a>
                         <a href="tel:+905396814675" class="contact-item" id="c-phone">
-                            <span class="ci-label">Telefon</span>
+                            <span class="ci-label" data-i18n="contact.phoneLabel">Telefon</span>
                             <span class="ci-val">+90 539 681 46 75</span>
                         </a>
                     </div>
@@ -206,19 +205,19 @@
                 <form id="contact-form" class="contact-form" novalidate>
                     <div class="field-row">
                         <div class="field">
-                            <label for="form-name">İsim</label>
-                            <input type="text" id="form-name" name="name" placeholder="Adın Soyadın" required>
+                            <label for="form-name" data-i18n="contact.name">İsim</label>
+                            <input type="text" id="form-name" name="name" data-i18n-placeholder="contact.namePh" placeholder="Adın Soyadın" required>
                         </div>
                         <div class="field">
-                            <label for="form-email">E-posta</label>
-                            <input type="email" id="form-email" name="email" placeholder="email@ornek.com" required>
+                            <label for="form-email" data-i18n="contact.emailLabel">E-posta</label>
+                            <input type="email" id="form-email" name="email" data-i18n-placeholder="contact.emailPh" placeholder="email@ornek.com" required>
                         </div>
                     </div>
                     <div class="field">
-                        <label for="form-message">Mesaj</label>
-                        <textarea id="form-message" name="message" rows="5" placeholder="Mesajını yaz..." required></textarea>
+                        <label for="form-message" data-i18n="contact.message">Mesaj</label>
+                        <textarea id="form-message" name="message" rows="5" data-i18n-placeholder="contact.messagePh" placeholder="Mesajını yaz..." required></textarea>
                     </div>
-                    <button type="submit" id="contact-submit" class="btn-primary">Gönder</button>
+                    <button type="submit" id="contact-submit" class="btn-primary" data-i18n="contact.send">Gönder</button>
                     <p id="form-feedback" class="form-feedback"></p>
                 </form>
             </div>
