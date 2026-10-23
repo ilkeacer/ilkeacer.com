@@ -152,8 +152,10 @@
 
             try {
                 // Load TF.js + COCO-SSD via CDN dynamically
-                await loadScript('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js');
-                await loadScript('https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js');
+                await loadScript('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.es2017.min.js',
+                    'sha384-r+Hpr1h+eNMgDuP3wfUV6HX6MvJ6zYyN5a+PEEjx65IzsuSzSGt2kPxkIe2nLrVa');
+                await loadScript('https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js',
+                    'sha384-7qLdgfEQyO9ZQi9ArRHigK+IBto4XPk468jAqc+fnsXaZIcMAhQeLwzggRK7aESl');
                 model = await window.cocoSsd.load({ base: 'mobilenet_v2' });
                 modelLoaded = true;
             } catch (e) {
@@ -218,11 +220,17 @@
     });
 
     // ─── UTIL: dynamic script loader ────────
-    function loadScript(src) {
+    function loadScript(src, integrity) {
         return new Promise((resolve, reject) => {
-            if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
+            const existing = document.querySelector(`script[src="${src}"]`);
+            if (existing?.dataset.loaded === 'true') { resolve(); return; }
+            if (existing) existing.remove();
             const s = document.createElement('script');
-            s.src = src; s.onload = resolve; s.onerror = reject;
+            s.src = src;
+            s.integrity = integrity;
+            s.crossOrigin = 'anonymous';
+            s.onload = () => { s.dataset.loaded = 'true'; resolve(); };
+            s.onerror = () => { s.remove(); reject(new Error('Script could not be verified or loaded')); };
             document.head.appendChild(s);
         });
     }
