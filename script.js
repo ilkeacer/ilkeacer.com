@@ -302,6 +302,21 @@ async function loadRepos() {
     }
 }
 
+// GitHub metadata is external input, including descriptions and homepage URLs.
+function escapeHTML(value) {
+    const entities = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+    return String(value).replace(/[&<>"']/g, char => entities[char]);
+}
+
+function safeHttpsUrl(value) {
+    try {
+        const url = new URL(value);
+        return url.protocol === 'https:' && !url.username && !url.password ? url.href : null;
+    } catch {
+        return null;
+    }
+}
+
 function renderRepos(repos) {
     const container = document.getElementById('projects-list');
     const loading   = document.getElementById('projects-loading');
@@ -315,26 +330,30 @@ function renderRepos(repos) {
     repos.forEach(repo => {
         const lang  = repo.language || null;
         const color = lang ? (LANG_COLORS[lang] || '#666') : '#444';
+        const githubUrl = `https://github.com/${GITHUB_USERNAME}/${encodeURIComponent(repo.name)}`;
+        const homepage = safeHttpsUrl(repo.homepage);
+        const stars = Number.isSafeInteger(repo.stargazers_count) && repo.stargazers_count > 0
+            ? repo.stargazers_count : 0;
         const row   = document.createElement('div');
         row.className = 'proj-row';
         row.innerHTML = `
             <div class="pr-left">
-                ${lang ? `<span class="pr-dot" style="background:${color}" title="${lang}"></span>` : ''}
+                ${lang ? `<span class="pr-dot" style="background:${color}" title="${escapeHTML(lang)}"></span>` : ''}
                 <div class="pr-info">
-                    <div class="pr-name">${repo.name}</div>
-                    ${repo.description ? `<div class="pr-desc">${repo.description}</div>` : ''}
+                    <div class="pr-name">${escapeHTML(repo.name)}</div>
+                    ${repo.description ? `<div class="pr-desc">${escapeHTML(repo.description)}</div>` : ''}
                 </div>
             </div>
             <div class="pr-right">
-                ${repo.stargazers_count > 0 ? `
+                ${stars > 0 ? `
                 <span class="pr-stat">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                     </svg>
-                    ${repo.stargazers_count}
+                    ${stars}
                 </span>` : ''}
-                <a href="${repo.html_url}" target="_blank" rel="noopener" class="pr-link">${t['projects.ghLink']} →</a>
-                ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" rel="noopener" class="pr-link">${t['projects.demoLink']} →</a>` : ''}
+                <a href="${escapeHTML(githubUrl)}" target="_blank" rel="noopener noreferrer" class="pr-link">${t['projects.ghLink']} →</a>
+                ${homepage ? `<a href="${escapeHTML(homepage)}" target="_blank" rel="noopener noreferrer" class="pr-link">${t['projects.demoLink']} →</a>` : ''}
             </div>
         `;
         container.appendChild(row);
