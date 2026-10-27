@@ -55,8 +55,16 @@
     ];
 
     // ─── STATUS HELPERS ──────────────────────
-    function setStatus(state, text) {
-        dsText.textContent = text;
+    function setTranslatedText(element, key) {
+        // Keep the translation key in sync with the current camera state.
+        // applyLang() can then translate it without resetting the control.
+        element.dataset.i18n = key;
+        const lang = document.documentElement.lang || 'tr';
+        element.textContent = (TRANSLATIONS[lang] || TRANSLATIONS.tr)[key];
+    }
+
+    function setStatus(state, key) {
+        setTranslatedText(dsText, key);
         dsDot.className = 'ds-dot ds-' + state; // idle | loading | active
     }
 
@@ -119,7 +127,7 @@
 
     function updateDetectionList(predictions, lang) {
         if (!predictions.length) {
-            detections.innerHTML = `<p class="demo-empty">${lang === 'tr' ? 'Algılanan nesne yok' : 'No objects detected'}</p>`;
+            detections.innerHTML = `<p class="demo-empty" data-i18n="demo.waiting">${lang === 'tr' ? 'Algılanan nesne yok' : 'No objects detected'}</p>`;
             return;
         }
 
@@ -142,13 +150,11 @@
 
     // ─── START / STOP ────────────────────────
     async function startDemo() {
-        const lang = document.documentElement.lang || 'tr';
-
         // Load model lazily
         if (!modelLoaded) {
-            setStatus('loading', lang === 'tr' ? 'Model yükleniyor...' : 'Loading model...');
+            setStatus('loading', 'demo.loadingModel');
             btn.disabled = true;
-            btn.textContent = lang === 'tr' ? 'Yükleniyor...' : 'Loading...';
+            setTranslatedText(btn, 'demo.loading');
 
             try {
                 // Load TF.js + COCO-SSD via CDN dynamically
@@ -159,9 +165,9 @@
                 model = await window.cocoSsd.load({ base: 'mobilenet_v2' });
                 modelLoaded = true;
             } catch (e) {
-                setStatus('idle', lang === 'tr' ? 'Model yüklenemedi' : 'Failed to load model');
+                setStatus('idle', 'demo.modelError');
                 btn.disabled = false;
-                btn.textContent = lang === 'tr' ? 'Tekrar Dene' : 'Retry';
+                setTranslatedText(btn, 'demo.retry');
                 return;
             }
         }
@@ -172,9 +178,9 @@
                 video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' }
             });
         } catch (e) {
-            setStatus('idle', lang === 'tr' ? 'Kamera erişimi reddedildi' : 'Camera access denied');
+            setStatus('idle', 'demo.cameraDenied');
             btn.disabled = false;
-            btn.textContent = lang === 'tr' ? 'Kamerayı Başlat' : 'Start Camera';
+            setTranslatedText(btn, 'demo.start');
             return;
         }
 
@@ -189,8 +195,8 @@
         running = true;
         rafId = requestAnimationFrame(detectFrame);
 
-        setStatus('active', lang === 'tr' ? 'Çalışıyor' : 'Running');
-        btn.textContent = lang === 'tr' ? 'Durdur' : 'Stop';
+        setStatus('active', 'demo.running');
+        setTranslatedText(btn, 'demo.stop');
         btn.dataset.mode = 'stop';
         btn.disabled = false;
     }
@@ -208,10 +214,10 @@
         fpsEl.textContent = '';
 
         const lang = document.documentElement.lang || 'tr';
-        setStatus('idle', lang === 'tr' ? 'Hazır' : 'Ready');
-        btn.textContent = lang === 'tr' ? 'Kamerayı Başlat' : 'Start Camera';
+        setStatus('idle', 'demo.ready');
+        setTranslatedText(btn, 'demo.start');
         btn.dataset.mode = 'start';
-        detections.innerHTML = `<p class="demo-empty">${lang === 'tr' ? 'Algılanan nesne yok' : 'No objects detected'}</p>`;
+        detections.innerHTML = `<p class="demo-empty" data-i18n="demo.waiting">${lang === 'tr' ? 'Algılanan nesne yok' : 'No objects detected'}</p>`;
     }
 
     btn.addEventListener('click', () => {
